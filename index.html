@@ -89,6 +89,41 @@ nav.tabs .tab::before {display:none!important;content:none!important;}
   .set-remove { width:34px; min-width:34px; }
   footer { padding-bottom:10px; }
 }
+</style><style id="hybrid-ios-date-size-fix">
+/* iOS Safari date controls can ignore intrinsic dimensions when native appearance is enabled. */
+@media (max-width:700px) {
+  input[type="date"] {
+    -webkit-appearance:none!important;
+    appearance:none!important;
+    display:block!important;
+    box-sizing:border-box!important;
+    width: min(100%, 240px)!important;
+    max-width:240px!important;
+    min-width:0!important;
+    height:46px!important;
+    min-height:46px!important;
+    max-height:46px!important;
+    padding:0 12px!important;
+    margin:0!important;
+    border-radius:11px!important;
+    font-size:16px!important;
+    line-height:46px!important;
+    overflow:hidden!important;
+  }
+  input[type="date"]::-webkit-date-and-time-value {
+    min-height:0!important;
+    height:44px!important;
+    line-height:44px!important;
+    text-align:left!important;
+  }
+  input[type="date"]::-webkit-datetime-edit {
+    display:inline-flex!important;
+    align-items:center!important;
+    padding:0!important;
+    line-height:44px!important;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {margin:0 0 0 auto!important;}
+}
 </style></head><body><div class="wrap"><div id="mobileStorageWarning" class="notice" style="display:none" role="status">This browser cannot reliably save data from this file. Your browser may not retain local-file data. Export a JSON backup after each session and import it when needed. No hosting is required.</div><header><div><h1>HYBRID<span style="color:var(--accent)">.</span></h1><p class="sub">Strength · Conditioning · Nutrition · Progress</p></div><span class="tag">12-WEEK BUILD</span></header><nav class="tabs" aria-label="Sections"><button class="tab active" data-page="dashboard">Overview</button><button class="tab" data-page="workouts">Workouts</button><button class="tab" data-page="nutrition">Nutrition</button><button class="tab" data-page="progress">Body progress</button><button class="tab" data-page="plan">Training plan</button><button class="tab" data-page="timer">AMRAP Timer</button><button class="tab" data-page="settings">Settings</button></nav>
 <section id="dashboard" class="page active"><div class="grid"><div class="card stat"><div class="label">LATEST WEIGHT</div><div class="num" id="statWeight">—</div><small>lb</small></div><div class="card stat"><div class="label">WORKOUTS THIS WEEK</div><div class="num" id="statWorkouts">0</div><small>sessions logged</small></div><div class="card stat"><div class="label">PROTEIN TODAY</div><div class="num" id="statProtein">0g</div><small id="proteinGoalLabel">goal 200g</small></div><div class="card stat"><div class="label">CALORIES TODAY</div><div class="num" id="statCalories">0</div><small id="calGoalLabel">set your target</small></div></div><div class="two"><div class="card"><h2>Today's nutrition</h2><div id="dashProgress"></div></div><div class="card"><h2>Recent activity</h2><div id="recentActivity"></div></div></div><div class="card"><h2>Body weight trend</h2><canvas id="dashChart" width="800" height="220" aria-label="Body weight chart"></canvas></div>
 <div class="card fitness-tips"><div class="tips-heading"><div><span class="tips-eyebrow">YOUR TRAINING GUIDE</span><h2>Fitness tips <span aria-hidden="true">✦</span></h2><p class="muted">Small habits that build strength, endurance, and consistency.</p></div><span class="tips-mark" aria-hidden="true">✳</span></div>
