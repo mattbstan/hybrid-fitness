@@ -66,6 +66,29 @@ nav.tabs .tab::before {display:none!important;content:none!important;}
 .legacy-workout-fields{display:none}.set-editor{background:var(--card2);border:1px solid var(--border);padding:16px;border-radius:14px;margin:12px 0 16px}.set-editor-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}.set-editor-heading h3{margin:0}.set-column-head,.workout-set-row{display:grid;grid-template-columns:42px minmax(0,1fr) minmax(0,1fr) 40px;gap:9px;align-items:center}.set-column-head{color:var(--muted);font-size:12px;margin:12px 0 6px}.workout-set-row{margin:8px 0}.workout-set-row input{min-width:0;width:100%}.set-number{text-align:center;font-weight:800;color:var(--accent)}.set-remove{border:1px solid #a74770;background:#45202f;color:#ffe2ed;border-radius:9px;font-size:24px;height:44px;cursor:pointer}.set-editor-heading .secondary{white-space:nowrap}@media(max-width:420px){.set-editor{padding:10px}.set-column-head,.workout-set-row{grid-template-columns:27px minmax(0,1fr) minmax(0,1fr) 36px;gap:5px}.set-editor-heading{flex-wrap:wrap}.set-editor-heading .secondary{width:auto}}
 </style><style>
 .workout-movement-list{display:grid;gap:14px;margin:12px 0}.movement-card{border:1px solid #864665;background:#211321;border-radius:16px;padding:16px;min-width:0}.movement-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;color:#ffacd3}.movement-cardio[hidden],.movement-strength[hidden],.remove-movement[hidden]{display:none!important}.movement-card .fields{margin-bottom:12px}.movement-card input,.movement-card select{max-width:100%}.movement-card .set-editor{margin:0}.movement-cardio{padding-top:8px}.movement-cardio label{color:#ffb4d5}@media(max-width:600px){.movement-card{padding:12px}.movement-top{flex-wrap:wrap}.movement-card .set-column-head,.movement-card .workout-set-row{grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 32px}}
+</style><style>
+/* HYBRID mobile dock: navigation remains reachable without scrolling the page. */
+@media (max-width: 700px) {
+  html,body { width:100%; max-width:100%; overflow-x:hidden; }
+  body { padding-top: env(safe-area-inset-top, 0px); }
+  .wrap { width:100%; max-width:100%; padding:12px 12px calc(104px + env(safe-area-inset-bottom, 0px))!important; }
+  .wrap > header { padding-top:0; margin-bottom:16px; }
+  .card,.movement-card,.set-editor,.hx-card { min-width:0; max-width:100%; }
+  .row { flex-wrap:wrap; }
+  .fields,.fields.four { min-width:0; }
+  input,select,textarea { width:100%; max-width:100%; }
+  .mobile-nav-dock { position:fixed!important; z-index:1000!important; left:0!important; right:0!important; bottom:0!important; width:100%!important; height:calc(76px + env(safe-area-inset-bottom, 0px)); display:flex!important; align-items:stretch!important; gap:5px!important; overflow-x:auto!important; overflow-y:hidden!important; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:7px 10px calc(7px + env(safe-area-inset-bottom, 0px))!important; background:#160c17!important; border-top:1px solid #79415e!important; box-shadow:0 -8px 24px #0009!important; }
+  .mobile-nav-dock::-webkit-scrollbar { display:none; }
+  .mobile-nav-dock nav.tabs, .mobile-nav-dock #hxTabs, .mobile-nav-dock #hxProTabs { display:contents!important; }
+  .mobile-nav-dock nav.tabs .tab, .mobile-nav-dock #hxTabs .tab, .mobile-nav-dock #hxProTabs .tab { flex:0 0 auto!important; min-width:66px!important; max-width:105px!important; height:60px!important; min-height:60px!important; margin:0!important; padding:8px 9px!important; border:1px solid #563149!important; border-radius:12px!important; background:#2b1829!important; color:#f0c8dc!important; font-size:11px!important; line-height:1.15!important; white-space:normal!important; text-align:center!important; overflow:hidden!important; }
+  .mobile-nav-dock .tab.active { background:#ff73b5!important; color:#210a16!important; border-color:#ff73b5!important; font-weight:800!important; }
+  .mobile-nav-dock .tab::before { display:none!important; }
+  .set-column-head,.workout-set-row { grid-template-columns:25px minmax(0,1fr) minmax(0,1fr) 34px!important; gap:5px!important; }
+  .set-editor,.movement-card { padding:10px!important; }
+  .workout-set-row input { padding:10px 6px!important; }
+  .set-remove { width:34px; min-width:34px; }
+  footer { padding-bottom:10px; }
+}
 </style></head><body><div class="wrap"><div id="mobileStorageWarning" class="notice" style="display:none" role="status">This browser cannot reliably save data from this file. Your browser may not retain local-file data. Export a JSON backup after each session and import it when needed. No hosting is required.</div><header><div><h1>HYBRID<span style="color:var(--accent)">.</span></h1><p class="sub">Strength · Conditioning · Nutrition · Progress</p></div><span class="tag">12-WEEK BUILD</span></header><nav class="tabs" aria-label="Sections"><button class="tab active" data-page="dashboard">Overview</button><button class="tab" data-page="workouts">Workouts</button><button class="tab" data-page="nutrition">Nutrition</button><button class="tab" data-page="progress">Body progress</button><button class="tab" data-page="plan">Training plan</button><button class="tab" data-page="timer">AMRAP Timer</button><button class="tab" data-page="settings">Settings</button></nav>
 <section id="dashboard" class="page active"><div class="grid"><div class="card stat"><div class="label">LATEST WEIGHT</div><div class="num" id="statWeight">—</div><small>lb</small></div><div class="card stat"><div class="label">WORKOUTS THIS WEEK</div><div class="num" id="statWorkouts">0</div><small>sessions logged</small></div><div class="card stat"><div class="label">PROTEIN TODAY</div><div class="num" id="statProtein">0g</div><small id="proteinGoalLabel">goal 200g</small></div><div class="card stat"><div class="label">CALORIES TODAY</div><div class="num" id="statCalories">0</div><small id="calGoalLabel">set your target</small></div></div><div class="two"><div class="card"><h2>Today's nutrition</h2><div id="dashProgress"></div></div><div class="card"><h2>Recent activity</h2><div id="recentActivity"></div></div></div><div class="card"><h2>Body weight trend</h2><canvas id="dashChart" width="800" height="220" aria-label="Body weight chart"></canvas></div>
 <div class="card fitness-tips"><div class="tips-heading"><div><span class="tips-eyebrow">YOUR TRAINING GUIDE</span><h2>Fitness tips <span aria-hidden="true">✦</span></h2><p class="muted">Small habits that build strength, endurance, and consistency.</p></div><span class="tips-mark" aria-hidden="true">✳</span></div>
@@ -312,6 +335,23 @@ search.addEventListener('input',draw);category.addEventListener('change',draw);
 const form=$('addExerciseForm');if(form){form.addEventListener('submit',e=>{setTimeout(()=>{const name=$('newExerciseName')?.value.trim();if(name){const a=customs();if(!a.some(x=>x.name.toLowerCase()===name.toLowerCase())){a.push({name,muscle:$('newExerciseMuscle')?.value||'Other',category:$('newExerciseCategory')?.value||'Strength',description:$('newExerciseDescription')?.value||'',custom:true});try{localStorage.setItem(savedKey,JSON.stringify(a))}catch{}}}draw()},0)},true)}
 // The catalog is initialized independently of dashboard/chart rendering.
 draw();
+})();
+</script>
+
+<script>
+/* Reuse the existing navigation buttons and handlers; change only their mobile placement. */
+(function(){
+ const navs=[document.querySelector('.wrap > nav.tabs'),document.getElementById('hxTabs'),document.getElementById('hxProTabs')].filter(Boolean);
+ if(!navs.length)return;
+ const dock=document.createElement('div');dock.className='mobile-nav-dock';dock.setAttribute('aria-label','All app sections — swipe left or right');
+ const placeholders=navs.map(n=>{const m=document.createComment('HYBRID navigation original location');n.parentNode.insertBefore(m,n);return m});
+ const mq=window.matchMedia('(max-width: 700px)');
+ function arrange(){
+  if(mq.matches){if(!dock.isConnected)document.body.appendChild(dock);navs.forEach(n=>dock.appendChild(n));}
+  else {navs.forEach((n,i)=>placeholders[i].parentNode.insertBefore(n,placeholders[i].nextSibling));dock.remove();}
+ }
+ arrange();if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
+ dock.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;const target=b.offsetLeft+b.offsetWidth/2-dock.clientWidth/2;dock.scrollTo({left:Math.max(0,target),behavior:'smooth'});});
 })();
 </script>
 </body></html>
